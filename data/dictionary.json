@@ -1,30 +1,323 @@
 {
-  "Y11_Country": "Country of residence",
-  "Y11_Q31": "Marital status",
-  "Y11_Education": "Highest level of education completed",
-  "Y11_Agecategory": "Age category of respondent",
-  "Y11_HH2a": "Gender of respondent",
-  "Y11_HHstructure": "Household structure",
-  "Y11_Q49": "Type of area respondent lives in",
-  "Y11_Q42": "Self-rated general health",
-  "Y11_Q18": "Accommodation tenure type",
-  "Y11_Q58": "Household’s ability to make ends meet",
-  "Y11_Q44": "Limitation caused by chronic health condition",
-  "Y11_Q29a": "Optimism about the future",
-  "Wave": "Survey wave year",
-  "Y11_Q32": "Number of children",
-  "Y11_HHsize": "Household size including children",
-  "Y11_Accommproblems": "Number of accommodation problems",
-  "Y11_SocExIndex": "Social Exclusion Index",
-  "Y11_Q41": "Overall happiness score",
-  "Y11_Q30": "Life satisfaction",
-  "Y11_Q40a": "Satisfaction with education",
-  "Y11_Q40b": "Satisfaction with present job",
-  "Y11_Q40c": "Satisfaction with standard of living",
-  "Y11_Q40d": "Satisfaction with accommodation",
-  "Y11_Q40e": "Satisfaction with family life",
-  "Y11_Q40f": "Satisfaction with health",
-  "Y11_Q40g": "Satisfaction with social life",
-  "Y11_Q7": "Hours worked per week in main job",
-  "Y11_Q24": "Perception that most people can be trusted"
+  "Y11_MWIndex": {
+    "description": "WHO-5 mental wellbeing index",
+    "causal_type": "outcome",
+    "data_type": "numeric_continuous",
+    "range": [0, 100]
+  },
+
+  "Y11_Q57": {
+    "description": "Perception of financial situation (vs. most people in country)",
+    "causal_type": "treatment",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Much worse",
+      "2": "Somewhat worse",
+      "3": "About the same",
+      "4": "Somewhat better",
+      "5": "Much better"
+    }
+  },
+
+  "Y11_Country": {
+    "description": "Country of residence",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "1": "Austria",
+      "2": "Belgium",
+      "3": "Bulgaria",
+      "4": "Cyprus",
+      "5": "Czech Republic",
+      "6": "Germany",
+      "7": "Denmark",
+      "8": "Estonia",
+      "9": "Greece",
+      "10": "Spain",
+      "11": "Finland",
+      "12": "France",
+      "13": "Hungary",
+      "14": "Ireland",
+      "15": "Italy",
+      "16": "Lithuania",
+      "17": "Luxembourg",
+      "18": "Latvia",
+      "19": "Malta",
+      "20": "Netherlands",
+      "21": "Poland",
+      "22": "Portugal",
+      "23": "Romania",
+      "24": "Sweden",
+      "25": "Slovenia",
+      "26": "Slovakia",
+      "27": "United Kingdom",
+      "28": "Turkey",
+      "29": "Croatia",
+      "30": "North Macedonia",
+      "35": "Norway"
+    }
+  },
+
+  "Y11_Q31": {
+    "description": "Marital status",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "1": "Married / living with partner",
+      "2": "Separated / divorced",
+      "3": "Widowed",
+      "4": "Never married"
+    }
+  },
+
+  "Y11_Education": {
+    "description": "Highest level of education completed",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Primary or less",
+      "2": "Secondary",
+      "3": "Tertiary",
+      "4": "Completed abroad",
+      "5": "Don't know",
+      "6": "Refusal"
+    }
+  },
+
+  "Y11_Agecategory": {
+    "description": "Age category of respondent",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "18–24",
+      "2": "25–34",
+      "3": "35–49",
+      "4": "50–64",
+      "5": "65+"
+    }
+  },
+
+  "Y11_HH2a": {
+    "description": "Gender of respondent",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "1": "Male",
+      "2": "Female"
+    }
+  },
+
+  "Y11_HHstructure": {
+    "description": "Household structure",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "1": "Single",
+      "2": "Couple",
+      "3": "Single parent",
+      "4": "Couple with children",
+      "5": "Other"
+    }
+  },
+
+  "Y11_Q49": {
+    "description": "Type of area respondent lives in",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Open countryside",
+      "2": "Village / small town",
+      "3": "Medium / large town",
+      "4": "City or suburb"
+    }
+  },
+
+  "Y11_Q42": {
+    "description": "Self-rated general health",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Very good",
+      "2": "Good",
+      "3": "Fair",
+      "4": "Bad",
+      "5": "Very bad"
+    }
+  },
+
+  "Y11_Q18": {
+    "description": "Accommodation tenure type",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "1": "Own without mortgage",
+      "2": "Own with mortgage",
+      "3": "Private rent",
+      "4": "Social/municipal rent",
+      "5": "Rent-free",
+      "6": "Other"
+    }
+  },
+
+  "Y11_Q58": {
+    "description": "Household’s ability to make ends meet",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Very easily",
+      "2": "Easily",
+      "3": "Fairly easily",
+      "4": "With some difficulty",
+      "5": "With difficulty",
+      "6": "With great difficulty"
+    }
+  },
+
+  "Y11_Q44": {
+    "description": "Limitation caused by chronic health condition",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Yes, severely",
+      "2": "Yes, to some extent",
+      "3": "No"
+    }
+  },
+
+  "Y11_Q29a": {
+    "description": "Optimism about the future",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Strongly agree",
+      "2": "Agree",
+      "3": "Neither agree nor disagree",
+      "4": "Disagree",
+      "5": "Strongly disagree"
+    }
+  },
+
+  "Wave": {
+    "description": "Survey wave year",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "2": "2007",
+      "3": "2011"
+    }
+  },
+
+  "Y11_Q32": {
+    "description": "Number of children",
+    "causal_type": "confounder",
+    "data_type": "numeric_discrete",
+    "range": [0, 5],
+    "note": "5 represents ‘5 or more’ children"
+  },
+
+  "Y11_HHsize": {
+    "description": "Household size including children",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "1-person household",
+      "2": "2-person household",
+      "3": "3-person household",
+      "4": "4 or more person household"
+    }
+  },
+
+  "Y11_Accommproblems": {
+    "description": "Number of accommodation problems",
+    "causal_type": "confounder",
+    "data_type": "numeric_discrete",
+    "range": [0, 6],
+    "note": "Count of six possible housing-quality problems"
+  },
+
+  "Y11_SocExIndex": {
+    "description": "Social Exclusion Index",
+    "causal_type": "confounder",
+    "data_type": "numeric_continuous",
+    "range": [0, 4],
+    "note": "Composite index; higher = greater exclusion"
+  },
+
+  "Y11_Q41": {
+    "description": "Overall happiness score",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q30": {
+    "description": "Life satisfaction",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40a": {
+    "description": "Satisfaction with education",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40b": {
+    "description": "Satisfaction with present job",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40c": {
+    "description": "Satisfaction with standard of living",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40d": {
+    "description": "Satisfaction with accommodation",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40e": {
+    "description": "Satisfaction with family life",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40f": {
+    "description": "Satisfaction with health",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q40g": {
+    "description": "Satisfaction with social life",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q7": {
+    "description": "Hours worked per week in main job",
+    "causal_type": "confounder",
+    "data_type": "numeric_continuous",
+    "range": [0, 80],
+    "note": "Values of 80 represent ‘80 hours or more’"
+  },
+
+  "Y11_Q24": {
+    "description": "Perception that most people can be trusted",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  }
 }
