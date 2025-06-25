@@ -8,4 +8,5 @@
     "notebook.codeActionsOnSave": {
         "notebook.source.fixAll": "explicit"
     },
+    "python.pyrefly.disableTypeErrors": true
 }

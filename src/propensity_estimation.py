@@ -56,6 +56,12 @@ def evaluate_model(
     }
 
 
+def get_propensity_estimator() -> GBDTClassifier:
+    return GBDTClassifier(
+        metric_key="roc_auc", do_tune=True, frac_features_keep=0.9
+    ).fit(*read_data_for_propensity())
+
+
 def main() -> None:
     plt.style.use("ggplot")
     X, y = read_data_for_propensity()
@@ -65,21 +71,27 @@ def main() -> None:
         "Logistic Regression": LogisticRegression(max_iter=1000),
         "Random Forest": RandomForestClassifier(),
         "Gaussian Naive Bayes": GaussianNB(),
-        "GBDT Classifier": GBDTClassifier(metric_key="brier_score", do_tune=True),
+        "GBDT Classifier": GBDTClassifier(
+            metric_key="roc_auc", do_tune=True, frac_features_keep=0.9
+        ),
     }
 
-    print(f"{'Model':<24} {'F1':>7} {'Brier':>8} {'ROC AUC':>9}")
-    print("-" * 50)
+    print(f"{'Model':<24} {'F1':<12} {'Brier':<12} {'ROC AUC':<12}")
+    print("-" * (24 + 12 + 12 + 12))
     for name, model in models.items():
         model.fit(X_train, y_train)
-        metrics = evaluate_model(model, X_test, y_test)
-        calibration_curve = metrics.pop("calibration_curve")
+        metrics: dict[str, float | ndarray[tuple[Any, ...], dtype[Any]]] = (
+            evaluate_model(model, X_test, y_test)
+        )
+        calibration_curve: float | ndarray[tuple[Any, ...], dtype[Any]] = metrics.pop(
+            "calibration_curve"
+        )
 
         print(
             f"{name:<24}"
-            f"{metrics['f1_score']:7.3f}"
-            f"{metrics['brier_score']:8.3f}"
-            f"{metrics['roc_auc']:9.3f}"
+            f"{metrics['f1_score']:<12.3f} "
+            f"{metrics['brier_score']:<12.3f} "
+            f"{metrics['roc_auc']:<12.3f} "
         )
 
         plt.plot(calibration_curve[1], calibration_curve[0], marker="o", label=name)

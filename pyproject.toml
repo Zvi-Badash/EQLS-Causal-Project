@@ -3,3 +3,9 @@ name = "project"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = []
+
+[tool]
+
+[tool.pyrefly]
+project-includes = ["**/*"]
+project-excludes = ['**/*venv/**\*', '**/*vscode/**\*', '**/*data/**\*']

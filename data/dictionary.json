@@ -160,7 +160,7 @@
   },
 
   "Y11_Q58": {
-    "description": "Household’s ability to make ends meet",
+    "description": "Household's ability to make ends meet",
     "causal_type": "confounder",
     "data_type": "ordinal",
     "values": {
@@ -212,7 +212,7 @@
     "causal_type": "confounder",
     "data_type": "numeric_discrete",
     "range": [0, 5],
-    "note": "5 represents ‘5 or more’ children"
+    "note": "5 represents ‘5 or more' children"
   },
 
   "Y11_HHsize": {
@@ -311,7 +311,7 @@
     "causal_type": "confounder",
     "data_type": "numeric_continuous",
     "range": [0, 80],
-    "note": "Values of 80 represent ‘80 hours or more’"
+    "note": "Values of 80 represent ‘80 hours or more'"
   },
 
   "Y11_Q24": {
@@ -319,5 +319,135 @@
     "causal_type": "confounder",
     "data_type": "ordinal",
     "range": [1, 10]
+  },
+
+    "Y11_EmploymentStatus": {
+    "description": "Employment status",
+    "causal_type": "confounder",
+    "data_type": "categorical_nominal",
+    "values": {
+      "1": "Employed (incl. on leave)",
+      "2": "Unemployed",
+      "3": "Unable to work – disability/illness",
+      "4": "Retired",
+      "5": "Homemaker",
+      "6": "Student",
+      "7": "Other"
+    }
+  },
+
+  "Y11_Incomequartiles_percapita": {
+    "description": "Equivalised household-income quartile",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "1st quartile (lowest)",
+      "2": "2nd quartile",
+      "3": "3rd quartile",
+      "4": "4th quartile (highest)"
+    }
+  },
+
+  "Y11_Deprindex": {
+    "description": "Material-deprivation index (count of items the household cannot afford)",
+    "causal_type": "confounder",
+    "data_type": "numeric_discrete",
+    "range": [0, 6]
+  },
+
+  "Y11_RuralUrban": {
+    "description": "Area type: rural vs. urban",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Countryside / village",
+      "2": "Town / city"
+    }
+  },
+
+  "Y11_Strainbasedconflict": {
+    "description": "Work-life balance conflict",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "No or weak conflict",
+      "2": "Either work or home conflict",
+      "3": "Both work and home conflict"
+    }
+  },
+
+  "Y11_Q52": {
+    "description": "Total daily commuting time (minutes)",
+    "causal_type": "confounder",
+    "data_type": "numeric_continuous",
+    "range": [0, 300],
+    "note": "Higher values imply longer commute burden"
+  },
+
+  "Y11_Q15": {
+    "description": "Perceived likelihood of losing current job in next 6 months",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Very likely",
+      "2": "Quite likely",
+      "3": "Neither likely nor unlikely",
+      "4": "Quite unlikely",
+      "5": "Very unlikely"
+    }
+  },
+
+  "Y11_Q16": {
+    "description": "Perceived chance of finding a similar-salary job if current job lost",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Very likely",
+      "2": "Quite likely",
+      "3": "Neither likely nor unlikely",
+      "4": "Quite unlikely",
+      "5": "Very unlikely"
+    }
+  },
+
+  "Y11_Q12a": {
+    "description": "Frequency of coming home from work too tired for household chores",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "Several times a week",
+      "2": "Several times a month",
+      "3": "Several times a year",
+      "4": "Less often / rarely",
+      "5": "Never"
+    }
+  },
+
+  "Y11_Q50d": {
+    "description": "Neighbourhood problem: crime, violence or vandalism",
+    "causal_type": "confounder",
+    "data_type": "categorical_binary",
+    "values": {
+      "1": "Yes",
+      "2": "No"
+    }
+  },
+
+  "Y11_Q53a": {
+    "description": "Perceived quality of health services",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "range": [1, 10]
+  },
+
+  "Y11_Q25a": {
+    "description": "Perceived tension between poor and rich in country",
+    "causal_type": "confounder",
+    "data_type": "ordinal",
+    "values": {
+      "1": "A lot of tension",
+      "2": "Some tension",
+      "3": "No tension"
+    }
   }
 }
