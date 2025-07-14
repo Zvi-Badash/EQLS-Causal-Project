@@ -71,7 +71,7 @@ class GBDTClassifier(BaseEstimator, ClassifierMixin):
         self,
         model_params=None,
         param_space=None,
-        max_evals=5,
+        max_evals=25,
         k_folds=10,
         random_state=42,
         frac_features_keep=1.0,
@@ -122,6 +122,8 @@ class GBDTClassifier(BaseEstimator, ClassifierMixin):
         if hasattr(self, "best_params_") and getattr(self, "best_params_", {}):
             merged = {**(self.model_params or {}), **self.best_params_}
             # Store them in an __init__ argument so sklearn.clone() carries them
+            for k in ("num_leaves", "max_depth", "min_data_in_leaf", "bagging_freq"):
+                merged[k] = int(merged[k])
             self.model_params = merged
 
         # Switch off the tuner

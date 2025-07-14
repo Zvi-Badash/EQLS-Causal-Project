@@ -9,8 +9,7 @@ from sklearn.base import clone
 from sklearn.ensemble import RandomForestClassifier
 from tqdm.auto import trange
 
-# from gbdt_utils import GBDTClassifier
-# from propensity_estimation import get_propensity_estimator
+from propensity_estimation import get_propensity_estimator
 
 
 def read_causal_data(
@@ -91,7 +90,7 @@ class TLearnerATE(BaseATEEstimator):
 class IPWATE(BaseATEEstimator):
     """Inverse‑Probability‑Weighted estimator."""
 
-    propensity_model = RandomForestClassifier(n_estimators=200)
+    propensity_model = get_propensity_estimator()
 
     def estimate_ate(
         self, X: pd.DataFrame, T: pd.Series, Y: pd.Series

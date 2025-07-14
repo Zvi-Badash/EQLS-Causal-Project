@@ -57,9 +57,11 @@ def evaluate_model(
 
 
 def get_propensity_estimator() -> GBDTClassifier:
-    return GBDTClassifier(
-        metric_key="roc_auc", do_tune=True, frac_features_keep=0.9
-    ).fit(*read_data_for_propensity())
+    return (
+        GBDTClassifier(metric_key="roc_auc", do_tune=True, frac_features_keep=0.9)
+        .fit(*read_data_for_propensity())
+        .freeze()
+    )
 
 
 def main() -> None:
