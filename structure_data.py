@@ -32,20 +32,24 @@ def choose_columns() -> pd.DataFrame:
     if not treatment_column or not outcome_column:
         raise ValueError("Causal columns must include both treatment and outcome.")
 
-    confounder_columns = []
+    covariate_columns = []
     for column, info in column_dictionary.items():
-        if info["causal_type"] == "confounder":
-            confounder_columns.append(column)
-    if not confounder_columns:
-        raise ValueError("Causal columns must include at least one confounder.")
+        if info["causal_type"] != "treatment" and info["causal_type"] != "outcome":
+            covariate_columns.append(column)
+    if not covariate_columns:
+        raise ValueError("Causal columns must include at least one covariate.")
 
     print(f"[+] Treatment column: {treatment_column}")
     print(f"[+] Outcome column: {outcome_column}")
-    print(f"[+] Confounder columns: {confounder_columns}")
+    print(f"[+] Covariate columns: {covariate_columns}")
+    for column in covariate_columns:
+        na_count = eqls_data[column].isna().sum()
+        na_percentage = na_count / len(eqls_data) * 100
+        print(f"[+] {column}: {na_count} NA values ({na_percentage:.2f}%)")
 
-    df = eqls_data[[treatment_column, outcome_column] + confounder_columns]
-    df.rename(
-        columns={treatment_column: "treatment", outcome_column: "outcome"}, inplace=True
+    df = eqls_data[[treatment_column, outcome_column] + covariate_columns].copy()
+    df = df.rename(
+        columns={treatment_column: "treatment", outcome_column: "outcome"}
     )
     return df
 

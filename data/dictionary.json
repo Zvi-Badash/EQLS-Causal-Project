@@ -3,9 +3,11 @@
     "description": "WHO-5 mental wellbeing index",
     "causal_type": "outcome",
     "data_type": "numeric_continuous",
-    "range": [0, 100]
+    "range": [
+      0,
+      100
+    ]
   },
-
   "Y11_Q57": {
     "description": "Perception of financial situation (vs. most people in country)",
     "causal_type": "treatment",
@@ -18,7 +20,6 @@
       "5": "Much better"
     }
   },
-
   "Y11_Country": {
     "description": "Country of residence",
     "causal_type": "confounder",
@@ -55,9 +56,9 @@
       "29": "Croatia",
       "30": "North Macedonia",
       "35": "Norway"
-    }
+    },
+    "variable_group": "Demographics"
   },
-
   "Y11_Q31": {
     "description": "Marital status",
     "causal_type": "confounder",
@@ -67,9 +68,9 @@
       "2": "Separated / divorced",
       "3": "Widowed",
       "4": "Never married"
-    }
+    },
+    "variable_group": "Demographics"
   },
-
   "Y11_Education": {
     "description": "Highest level of education completed",
     "causal_type": "confounder",
@@ -83,20 +84,19 @@
       "6": "Refusal"
     }
   },
-
   "Y11_Agecategory": {
     "description": "Age category of respondent",
     "causal_type": "confounder",
     "data_type": "ordinal",
     "values": {
-      "1": "18–24",
-      "2": "25–34",
-      "3": "35–49",
-      "4": "50–64",
+      "1": "18\u201324",
+      "2": "25\u201334",
+      "3": "35\u201349",
+      "4": "50\u201364",
       "5": "65+"
-    }
+    },
+    "variable_group": "Demographics"
   },
-
   "Y11_HH2a": {
     "description": "Gender of respondent",
     "causal_type": "confounder",
@@ -104,9 +104,9 @@
     "values": {
       "1": "Male",
       "2": "Female"
-    }
+    },
+    "variable_group": "Demographics"
   },
-
   "Y11_HHstructure": {
     "description": "Household structure",
     "causal_type": "confounder",
@@ -117,9 +117,9 @@
       "3": "Single parent",
       "4": "Couple with children",
       "5": "Other"
-    }
+    },
+    "variable_group": "Demographics"
   },
-
   "Y11_Q49": {
     "description": "Type of area respondent lives in",
     "causal_type": "confounder",
@@ -131,7 +131,6 @@
       "4": "City or suburb"
     }
   },
-
   "Y11_Q42": {
     "description": "Self-rated general health",
     "causal_type": "confounder",
@@ -142,12 +141,12 @@
       "3": "Fair",
       "4": "Bad",
       "5": "Very bad"
-    }
+    },
+    "variable_group": "Health"
   },
-
   "Y11_Q18": {
     "description": "Accommodation tenure type",
-    "causal_type": "confounder",
+    "causal_type": "effect_modifier",
     "data_type": "categorical_nominal",
     "values": {
       "1": "Own without mortgage",
@@ -156,9 +155,9 @@
       "4": "Social/municipal rent",
       "5": "Rent-free",
       "6": "Other"
-    }
+    },
+    "variable_group": "Living Environment"
   },
-
   "Y11_Q58": {
     "description": "Household's ability to make ends meet",
     "causal_type": "confounder",
@@ -172,7 +171,6 @@
       "6": "With great difficulty"
     }
   },
-
   "Y11_Q44": {
     "description": "Limitation caused by chronic health condition",
     "causal_type": "confounder",
@@ -181,9 +179,9 @@
       "1": "Yes, severely",
       "2": "Yes, to some extent",
       "3": "No"
-    }
+    },
+    "variable_group": "Health"
   },
-
   "Y11_Q29a": {
     "description": "Optimism about the future",
     "causal_type": "confounder",
@@ -196,15 +194,17 @@
       "5": "Strongly disagree"
     }
   },
-
   "Y11_Q32": {
     "description": "Number of children",
     "causal_type": "confounder",
     "data_type": "numeric_discrete",
-    "range": [0, 5],
-    "note": "5 represents ‘5 or more' children"
+    "range": [
+      0,
+      5
+    ],
+    "note": "5 represents \u20185 or more' children",
+    "variable_group": "Demographics"
   },
-
   "Y11_HHsize": {
     "description": "Household size including children",
     "causal_type": "confounder",
@@ -214,128 +214,163 @@
       "2": "2-person household",
       "3": "3-person household",
       "4": "4 or more person household"
-    }
+    },
+    "variable_group": "Demographics"
   },
-
   "Y11_Accommproblems": {
     "description": "Number of accommodation problems",
-    "causal_type": "confounder",
+    "causal_type": "effect_modifier",
     "data_type": "numeric_discrete",
-    "range": [0, 6],
-    "note": "Count of six possible housing-quality problems"
+    "range": [
+      0,
+      6
+    ],
+    "note": "Count of six possible housing-quality problems",
+    "variable_group": "Living Environment"
   },
-
   "Y11_SocExIndex": {
     "description": "Social Exclusion Index",
     "causal_type": "confounder",
     "data_type": "numeric_continuous",
-    "range": [0, 4],
+    "range": [
+      0,
+      4
+    ],
     "note": "Composite index; higher = greater exclusion"
   },
-
   "Y11_Q30": {
     "description": "Life satisfaction",
     "causal_type": "confounder",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ]
   },
-
   "Y11_Q40a": {
     "description": "Satisfaction with education",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q40b": {
     "description": "Satisfaction with present job",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q40c": {
     "description": "Satisfaction with standard of living",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q40d": {
     "description": "Satisfaction with accommodation",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q40e": {
     "description": "Satisfaction with family life",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q40f": {
     "description": "Satisfaction with health",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q40g": {
     "description": "Satisfaction with social life",
-    "causal_type": "confounder",
+    "causal_type": "mediator",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Satisfaction"
   },
-
   "Y11_Q7": {
     "description": "Hours worked per week in main job",
     "causal_type": "confounder",
     "data_type": "numeric_continuous",
-    "range": [0, 80],
-    "note": "Values of 80 represent ‘80 hours or more'"
+    "range": [
+      0,
+      80
+    ],
+    "note": "Values of 80 represent \u201880 hours or more'",
+    "variable_group": "Employment"
   },
-
   "Y11_Q24": {
     "description": "Perception that most people can be trusted",
     "causal_type": "confounder",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ]
   },
-
-    "Y11_EmploymentStatus": {
+  "Y11_EmploymentStatus": {
     "description": "Employment status",
     "causal_type": "confounder",
     "data_type": "categorical_nominal",
     "values": {
       "1": "Employed (incl. on leave)",
       "2": "Unemployed",
-      "3": "Unable to work – disability/illness",
+      "3": "Unable to work \u2013 disability/illness",
       "4": "Retired",
       "5": "Homemaker",
       "6": "Student",
       "7": "Other"
-    }
+    },
+    "variable_group": "Employment"
   },
-
   "Y11_Deprindex": {
     "description": "Material-deprivation index (count of items the household cannot afford)",
     "causal_type": "confounder",
     "data_type": "numeric_discrete",
-    "range": [0, 6]
+    "range": [
+      0,
+      6
+    ]
   },
-
   "Y11_RuralUrban": {
     "description": "Area type: rural vs. urban",
-    "causal_type": "confounder",
+    "causal_type": "effect_modifier",
     "data_type": "ordinal",
     "values": {
       "1": "Countryside / village",
       "2": "Town / city"
-    }
+    },
+    "variable_group": "Living Environment"
   },
-
   "Y11_Strainbasedconflict": {
     "description": "Work-life balance conflict",
     "causal_type": "confounder",
@@ -344,17 +379,19 @@
       "1": "No or weak conflict",
       "2": "Either work or home conflict",
       "3": "Both work and home conflict"
-    }
+    },
+    "variable_group": "Employment"
   },
-
   "Y11_Q52": {
     "description": "Total daily commuting time (minutes)",
     "causal_type": "confounder",
     "data_type": "numeric_continuous",
-    "range": [0, 300],
+    "range": [
+      0,
+      300
+    ],
     "note": "Higher values imply longer commute burden"
   },
-
   "Y11_Q15": {
     "description": "Perceived likelihood of losing current job in next 6 months",
     "causal_type": "confounder",
@@ -365,9 +402,9 @@
       "3": "Neither likely nor unlikely",
       "4": "Quite unlikely",
       "5": "Very unlikely"
-    }
+    },
+    "variable_group": "Employment"
   },
-
   "Y11_Q16": {
     "description": "Perceived chance of finding a similar-salary job if current job lost",
     "causal_type": "confounder",
@@ -378,9 +415,9 @@
       "3": "Neither likely nor unlikely",
       "4": "Quite unlikely",
       "5": "Very unlikely"
-    }
+    },
+    "variable_group": "Employment"
   },
-
   "Y11_Q12a": {
     "description": "Frequency of coming home from work too tired for household chores",
     "causal_type": "confounder",
@@ -391,26 +428,29 @@
       "3": "Several times a year",
       "4": "Less often / rarely",
       "5": "Never"
-    }
+    },
+    "variable_group": "Employment"
   },
-
   "Y11_Q50d": {
     "description": "Neighbourhood problem: crime, violence or vandalism",
-    "causal_type": "confounder",
+    "causal_type": "effect_modifier",
     "data_type": "categorical_binary",
     "values": {
       "1": "Yes",
       "2": "No"
-    }
+    },
+    "variable_group": "Living Environment"
   },
-
   "Y11_Q53a": {
     "description": "Perceived quality of health services",
-    "causal_type": "confounder",
+    "causal_type": "effect_modifier",
     "data_type": "ordinal",
-    "range": [1, 10]
+    "range": [
+      1,
+      10
+    ],
+    "variable_group": "Living Environment"
   },
-
   "Y11_Q25a": {
     "description": "Perceived tension between poor and rich in country",
     "causal_type": "confounder",
