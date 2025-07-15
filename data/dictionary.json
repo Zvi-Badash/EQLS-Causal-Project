@@ -197,16 +197,6 @@
     }
   },
 
-  "Wave": {
-    "description": "Survey wave year",
-    "causal_type": "confounder",
-    "data_type": "categorical_nominal",
-    "values": {
-      "2": "2007",
-      "3": "2011"
-    }
-  },
-
   "Y11_Q32": {
     "description": "Number of children",
     "causal_type": "confounder",
@@ -241,13 +231,6 @@
     "data_type": "numeric_continuous",
     "range": [0, 4],
     "note": "Composite index; higher = greater exclusion"
-  },
-
-  "Y11_Q41": {
-    "description": "Overall happiness score",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "range": [1, 10]
   },
 
   "Y11_Q30": {
@@ -333,18 +316,6 @@
       "5": "Homemaker",
       "6": "Student",
       "7": "Other"
-    }
-  },
-
-  "Y11_Incomequartiles_percapita": {
-    "description": "Equivalised household-income quartile",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "values": {
-      "1": "1st quartile (lowest)",
-      "2": "2nd quartile",
-      "3": "3rd quartile",
-      "4": "4th quartile (highest)"
     }
   },
 
