@@ -6,7 +6,8 @@
     "range": [
       0,
       100
-    ]
+    ],
+    "variable_group": "Y"
   },
   "Y11_Q57": {
     "description": "Perception of financial situation (vs. most people in country)",
@@ -18,7 +19,8 @@
       "3": "About the same",
       "4": "Somewhat better",
       "5": "Much better"
-    }
+    },
+    "variable_group": "T"
   },
   "Y11_Country": {
     "description": "Country of residence",
@@ -71,19 +73,6 @@
     },
     "variable_group": "Demographics"
   },
-  "Y11_Education": {
-    "description": "Highest level of education completed",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "values": {
-      "1": "Primary or less",
-      "2": "Secondary",
-      "3": "Tertiary",
-      "4": "Completed abroad",
-      "5": "Don't know",
-      "6": "Refusal"
-    }
-  },
   "Y11_Agecategory": {
     "description": "Age category of respondent",
     "causal_type": "confounder",
@@ -120,17 +109,6 @@
     },
     "variable_group": "Demographics"
   },
-  "Y11_Q49": {
-    "description": "Type of area respondent lives in",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "values": {
-      "1": "Open countryside",
-      "2": "Village / small town",
-      "3": "Medium / large town",
-      "4": "City or suburb"
-    }
-  },
   "Y11_Q42": {
     "description": "Self-rated general health",
     "causal_type": "confounder",
@@ -158,19 +136,6 @@
     },
     "variable_group": "Living Environment"
   },
-  "Y11_Q58": {
-    "description": "Household's ability to make ends meet",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "values": {
-      "1": "Very easily",
-      "2": "Easily",
-      "3": "Fairly easily",
-      "4": "With some difficulty",
-      "5": "With difficulty",
-      "6": "With great difficulty"
-    }
-  },
   "Y11_Q44": {
     "description": "Limitation caused by chronic health condition",
     "causal_type": "confounder",
@@ -181,18 +146,6 @@
       "3": "No"
     },
     "variable_group": "Health"
-  },
-  "Y11_Q29a": {
-    "description": "Optimism about the future",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "values": {
-      "1": "Strongly agree",
-      "2": "Agree",
-      "3": "Neither agree nor disagree",
-      "4": "Disagree",
-      "5": "Strongly disagree"
-    }
   },
   "Y11_Q32": {
     "description": "Number of children",
@@ -227,25 +180,6 @@
     ],
     "note": "Count of six possible housing-quality problems",
     "variable_group": "Living Environment"
-  },
-  "Y11_SocExIndex": {
-    "description": "Social Exclusion Index",
-    "causal_type": "confounder",
-    "data_type": "numeric_continuous",
-    "range": [
-      0,
-      4
-    ],
-    "note": "Composite index; higher = greater exclusion"
-  },
-  "Y11_Q30": {
-    "description": "Life satisfaction",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "range": [
-      1,
-      10
-    ]
   },
   "Y11_Q40a": {
     "description": "Satisfaction with education",
@@ -325,17 +259,8 @@
       0,
       80
     ],
-    "note": "Values of 80 represent \u201880 hours or more'",
+    "note": "Values of 80 represent '80 hours or more'",
     "variable_group": "Employment"
-  },
-  "Y11_Q24": {
-    "description": "Perception that most people can be trusted",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "range": [
-      1,
-      10
-    ]
   },
   "Y11_EmploymentStatus": {
     "description": "Employment status",
@@ -351,15 +276,6 @@
       "7": "Other"
     },
     "variable_group": "Employment"
-  },
-  "Y11_Deprindex": {
-    "description": "Material-deprivation index (count of items the household cannot afford)",
-    "causal_type": "confounder",
-    "data_type": "numeric_discrete",
-    "range": [
-      0,
-      6
-    ]
   },
   "Y11_RuralUrban": {
     "description": "Area type: rural vs. urban",
@@ -381,16 +297,6 @@
       "3": "Both work and home conflict"
     },
     "variable_group": "Employment"
-  },
-  "Y11_Q52": {
-    "description": "Total daily commuting time (minutes)",
-    "causal_type": "confounder",
-    "data_type": "numeric_continuous",
-    "range": [
-      0,
-      300
-    ],
-    "note": "Higher values imply longer commute burden"
   },
   "Y11_Q15": {
     "description": "Perceived likelihood of losing current job in next 6 months",
@@ -450,15 +356,5 @@
       10
     ],
     "variable_group": "Living Environment"
-  },
-  "Y11_Q25a": {
-    "description": "Perceived tension between poor and rich in country",
-    "causal_type": "confounder",
-    "data_type": "ordinal",
-    "values": {
-      "1": "A lot of tension",
-      "2": "Some tension",
-      "3": "No tension"
-    }
   }
 }

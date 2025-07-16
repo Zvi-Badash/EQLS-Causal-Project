@@ -48,9 +48,6 @@ def choose_columns() -> pd.DataFrame:
         print(f"[+] {column}: {na_count} NA values ({na_percentage:.2f}%)")
 
     df = eqls_data[[treatment_column, outcome_column] + covariate_columns].copy()
-    df = df.rename(
-        columns={treatment_column: "treatment", outcome_column: "outcome"}
-    )
     return df
 
 
@@ -59,6 +56,7 @@ def preprocess_data(
     na_threshold: float = 0.5,
     impute_strategy: Literal["drop", "mean", "median"] = "drop",
     treatment_dichotomize_value: Union[float, Literal["median"]] = "median",
+    treatment_column: str = "Y11_Q57",
 ) -> pd.DataFrame:
 
     # Handle missing values
@@ -75,11 +73,10 @@ def preprocess_data(
 
     # Dichotomize treatment variable
     if treatment_dichotomize_value == "median":
-        treatment_threshold = df["treatment"].median()
+        treatment_threshold = df[treatment_column].median()
     else:
         treatment_threshold: float = treatment_dichotomize_value
-    df["treatment"] = (df["treatment"] > treatment_threshold).astype(int)
-
+    df[treatment_column] = (df[treatment_column] > treatment_threshold).astype(int)
     return df
 
 
