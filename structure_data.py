@@ -13,7 +13,7 @@ def read_column_dictionary() -> dict:
         return json.load(file)
 
 
-def choose_columns() -> pd.DataFrame:
+def choose_columns(verbose=False) -> pd.DataFrame:
     eqls_data = read_eqls()
     column_dictionary = read_column_dictionary()
 
@@ -39,13 +39,14 @@ def choose_columns() -> pd.DataFrame:
     if not covariate_columns:
         raise ValueError("Causal columns must include at least one covariate.")
 
-    print(f"[+] Treatment column: {treatment_column}")
-    print(f"[+] Outcome column: {outcome_column}")
-    print(f"[+] Covariate columns: {covariate_columns}")
-    for column in covariate_columns:
-        na_count = eqls_data[column].isna().sum()
-        na_percentage = na_count / len(eqls_data) * 100
-        print(f"[+] {column}: {na_count} NA values ({na_percentage:.2f}%)")
+    if verbose:
+        print(f"[+] Treatment column: {treatment_column}")
+        print(f"[+] Outcome column: {outcome_column}")
+        print(f"[+] Covariate columns: {covariate_columns}")
+        for column in covariate_columns:
+            na_count = eqls_data[column].isna().sum()
+            na_percentage = na_count / len(eqls_data) * 100
+            print(f"[+] {column}: {na_count} NA values ({na_percentage:.2f}%)")
 
     df = eqls_data[[treatment_column, outcome_column] + covariate_columns].copy()
     return df

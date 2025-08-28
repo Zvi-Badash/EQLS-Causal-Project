@@ -6,6 +6,7 @@ dependencies = [
     "dowhy>=0.13",
     "drawio>=0.0.10",
     "ipykernel>=6.29.5",
+    "isort>=6.0.1",
     "jupyter>=1.1.1",
     "lightgbm>=4.6.0",
     "networkx>=3.4.2",
