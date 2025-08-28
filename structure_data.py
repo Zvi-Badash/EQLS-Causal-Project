@@ -54,22 +54,35 @@ def choose_columns() -> pd.DataFrame:
 def preprocess_data(
     df: pd.DataFrame,
     na_threshold: float = 0.5,
-    impute_strategy: Literal["drop", "mean", "median"] = "drop",
+    impute_strategy: Literal["drop", "mean", "median", "keep"] = "drop",
     treatment_dichotomize_value: Union[float, Literal["median"]] = "median",
     treatment_column: str = "Y11_Q57",
+    backdoor_variables: list[str] = None
 ) -> pd.DataFrame:
 
     # Handle missing values
     ## Drop all columns with more than na_threshold proportion of missing values
     df = df.dropna(axis=1, thresh=int(na_threshold * len(df)))
 
+    ## Fix working hours bug
+    df.loc[(df['Y11_EmploymentStatus'] != 1) & (df['Y11_Q7'].isna()), 'Y11_Q7'] = 0
+
     ## Apply strategy for remaining missing values
     if impute_strategy == "drop":
-        df = df.dropna(axis=0, how="any")
+        if backdoor_variables:
+            cols = [c for c in backdoor_variables if c in df.columns]
+            if cols:
+                df = df.dropna(axis=0, subset=cols, how="any")
+            else:
+                df = df.dropna(axis=0, how="any")
+        else:
+            df = df.dropna(axis=0, how="any")
     elif impute_strategy == "mean":
-        df = df.fillna(df.mean())
+        df = df.fillna(df.mean(numeric_only=True))
     elif impute_strategy == "median":
-        df = df.fillna(df.median())
+        df = df.fillna(df.median(numeric_only=True))
+    else:
+        pass
 
     # Dichotomize treatment variable
     if treatment_dichotomize_value == "median":
@@ -80,12 +93,12 @@ def preprocess_data(
     return df
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     df = choose_columns()
     df = preprocess_data(
         df,
         na_threshold=0.5,
-        impute_strategy="drop",
+        impute_strategy="keep",
         treatment_dichotomize_value="median",
     )
-    df.to_csv("data/eqls_processed.csv", index=False)
+    df.to_csv("data/eqls_processed_dont_drop.csv", index=False)
