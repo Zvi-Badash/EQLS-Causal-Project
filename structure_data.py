@@ -80,7 +80,7 @@ def preprocess_data(
     return df
 
 
-if __name__ == "__main__":
+if __name__ == "_main_":
     df = choose_columns()
     df = preprocess_data(
         df,

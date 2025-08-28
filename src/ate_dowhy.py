@@ -134,7 +134,6 @@ def estimate_ipw(y: np.ndarray, t: np.ndarray, p: np.ndarray) -> float:
 
 
 def nearest_neighbor_propensity_matching(p: np.ndarray, t: np.ndarray, y: np.ndarray, caliper: float = 0.2) -> float:
-    # 1:1 nearest neighbor on propensity
     logit = np.log(p / (1 - p))
     sd = np.std(logit)
     cal = caliper * sd
@@ -290,7 +289,7 @@ def run_dowhy_estimators(df: pd.DataFrame, graph: nx.Graph, methods: List[str], 
 
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--bootstrap', type=int, default=200)
+    parser.add_argument('--bootstrap', type=int, default=1)
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--no-plots', action='store_true')
     args = parser.parse_args(list(argv) if argv is not None else None)
@@ -313,8 +312,5 @@ def main(argv: Iterable[str] | None = None) -> int:
     print('\nBootstrap summary saved to:', RESULTS_PATH)
     print(summary.to_string(index=False))
 
-    return 0
-
-
 if __name__ == '__main__':
-    raise SystemExit(main())
+    main()
