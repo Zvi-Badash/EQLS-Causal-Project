@@ -226,9 +226,9 @@ def estimate_effects(
         boot_df_sample = df.iloc[idx].reset_index(drop=True)
         boot_rows.append(_estimate_once(boot_df_sample))
         print(f'Bootstrap {b}/{n_boot} done.')
+        pd.DataFrame(boot_rows).to_csv("bootstraps/current.csv", index=False)
 
     boot_df = pd.DataFrame(boot_rows)  # shape: n_boot x n_methods
-
     # 3) Build CI table
     lo_q = ci_alpha / 2.0
     hi_q = 1.0 - ci_alpha / 2.0
