@@ -1,0 +1,33 @@
+{
+  "csv": "bootstraps/current.csv",
+  "methods": [
+    "backdoor.propensity_score_matching",
+    "backdoor.propensity_score_weighting",
+    "backdoor.propensity_score_stratification",
+    "backdoor.linear_regression",
+    "backdoor.distance_matching",
+    "backdoor.T_learner"
+  ],
+  "n_subjects": 100,
+  "n_methods": 6,
+  "ss_total": 73.55485366746251,
+  "ss_subjects": 24.9673644030323,
+  "ss_treatments": 36.808977960955666,
+  "ss_error": 11.778511303474545,
+  "df_subjects": 99,
+  "df_treatments": 5,
+  "df_error": 495,
+  "ms_treatments": 7.361795592191133,
+  "ms_error": 0.023794972330251605,
+  "F": 309.3844989612262,
+  "p": 9.333873231957022e-150,
+  "partial_eta_sq": 0.7575813963267016,
+  "mauchly": {
+    "p": 2.902264274236244e-180,
+    "W": 0.00010047944286524225,
+    "chi2": 886.8020295326221,
+    "df": 14,
+    "n": 100,
+    "k": 6
+  }
+}

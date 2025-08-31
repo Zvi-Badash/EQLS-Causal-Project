@@ -47,7 +47,7 @@ OUT_PATH_DEFAULT.parent.mkdir(parents=True, exist_ok=True)
 NE_URL = "https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip"
 
 # Bounding box for continental Europe (lon_min, lat_min, lon_max, lat_max)
-EU_BBOX_DEFAULT = (-25.0, 34.0, 45.0, 72.0)
+EU_BBOX_DEFAULT = (-25, 32, 50, 72)
 
 # Manual name → ISO-3 map (based on your list)
 NAME_TO_ISO3 = {
@@ -78,10 +78,12 @@ NAME_TO_ISO3 = {
     "Slovenia": "SVN",
     "Slovakia": "SVK",
     "United Kingdom": "GBR",
-    "Turkey": "TUR",
     "Croatia": "HRV",
     "North Macedonia": "MKD",
     "Norway": "NOR",
+    "Turkey": "TUR",
+    "Türkiye": "TUR",
+
 }
 
 def warn(*msg):
@@ -174,9 +176,22 @@ def main():
     # ------- load & prep map -------
     world = load_world()
     if "continent" in world.columns:
-        eu = world[world["continent"].str.lower().eq("europe")].copy()
+        eu = world[world["continent"].str.lower().isin(["europe","asia"])].copy()
     else:
         eu = world.copy()
+
+    # Remove all countries not in the ISO conversion dict
+    EU_TURKEY_ISO3 = {
+        "AUT","BEL","BGR","HRV","CYP","CZE","DNK","EST","FIN","FRA","DEU",
+        "GRC","HUN","IRL","ITA","LVA","LTU","LUX","MLT","NLD","POL","PRT",
+        "ROU","SVK","SVN","ESP","SWE",
+        "TUR"  # Turkey
+    }
+
+    eu = world[
+        world["iso_a3"].isin(EU_TURKEY_ISO3)
+        | world['continent'].str.lower().isin(["europe", "asia"])
+        ].copy()
 
     # Clip to bbox
     minx, miny, maxx, maxy = parse_bbox(args.bbox)
@@ -243,14 +258,14 @@ def main():
         norm = mcolors.Normalize(vmin=vmin, vmax=vmax)
         sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
         sm.set_array([])
-        cbar = fig.colorbar(sm, ax=ax, fraction=0.03, pad=0.01)
+        cbar = fig.colorbar(sm, ax=ax, fraction=0.03, pad=0.01, shrink=2.75)
         cbar.set_label(col_label)
 
     # Alpha explainer
-    alpha_label = "Mean (clipped)" if alpha_field == "mean" else "Variance"
-    ax.text(0.01, 0.02,
-            f"Opacity ∝ {alpha_label}",
-            transform=ax.transAxes, ha="left", va="bottom", fontsize=10)
+    # alpha_label = "Mean (clipped)" if alpha_field == "mean" else "Variance"
+    # ax.text(0.01, 0.02,
+    #         f"Opacity ∝ {alpha_label}",
+    #         transform=ax.transAxes, ha="left", va="bottom", fontsize=10)
 
     # -------- labels (inside each polygon) --------
     # Use representative_point() to ensure the label falls within the shape
