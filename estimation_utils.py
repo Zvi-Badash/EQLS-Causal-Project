@@ -326,12 +326,9 @@ def matching_ate(
     outcome_col: str,
     dropna: bool = True,
     return_details: bool = False,
-    # Ordinals binning (from previous version)
     ord_binning=None,
-    # NEW: treat ordinals as exact or continuous
-    ord_mode: str = "exact",  # "exact" | "continuous"
-    # NEW: distance matching options when ord_mode="continuous"
-    distance_metric: str = "euclidean",  # "euclidean"|"minkowski"|"mahalanobis"|"seuclidean"
+    ord_mode: str = "exact",              # "exact" | "continuous"
+    distance_metric: str = "euclidean",   # "euclidean"|"minkowski"|"mahalanobis"|"seuclidean"
     p: int = 2,                           # for minkowski
     standardize: bool = True,             # z-score for euclidean/minkowski
     num_matches_per_unit: int = 1,        # k-NN
