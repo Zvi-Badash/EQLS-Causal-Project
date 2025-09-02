@@ -1,1 +1,5 @@
 uv.lock
+bootstraps/
+./.venv/
+./.vscode/
+__pycache__/

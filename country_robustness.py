@@ -86,6 +86,41 @@ NAME_TO_ISO3 = {
 
 }
 
+
+SPIs = {
+    "AUT": 87.8,  
+    "BEL": None,  
+    "BGR": 76.81,  
+    "CYP": None,   
+    "CZE": 85.19,
+    "DEU": 88.2,  
+    "DNK": 92.0,  
+    "EST": 86.16,  
+    "GRC": 82.44,  
+    "ESP": 85.35,  
+    "FIN": 91.3,  
+    "FRA": 86.07,  
+    "HUN": 78.21,  
+    "IRL": 88.8,  
+    "ITA": 85.23,  
+    "LTU": None,  
+    "LUX": 88.7,  
+    "LVA": 82.46,  
+    "MLT": None,  
+    "NLD": 88.8,  
+    "POL": 80.17,  
+    "PRT": 84.75,  
+    "ROU": 76.89,  
+    "SWE": 90.8,  
+    "SVN": None,  
+    "SVK": 81.29,  
+    "GBR": 86.13,
+    "HRV": 82.32,  
+    "MKD": 72.74,
+    "NOR": 92.0,  
+    "TUR": 66.59,  
+}
+
 def warn(*msg):
     print("[warn]", *msg, file=sys.stderr)
 
@@ -127,6 +162,19 @@ def compute_country_stats(res_by_id: dict, id_to_name: dict) -> pd.DataFrame:
             "name_src": cname
         })
     return pd.DataFrame(rows)
+
+def compute_SPI_corr(country_stats):
+    from scipy.stats import spearmanr
+
+    # Anchor to SPI index
+    common_not_na_keys = set(country_stats['iso_a3']).intersection(k for k in SPIs.keys() if SPIs[k] is not None)
+    
+    # Compute Pearson correlation
+    corr, pv = spearmanr(
+        [SPIs[k] for k in common_not_na_keys],
+        [country_stats.loc[country_stats['iso_a3'] == k, 'var'].values[0] for k in common_not_na_keys]
+    )
+    return corr, pv
 
 def minmax_scale(series: pd.Series):
     s = series.astype(float)
@@ -172,6 +220,8 @@ def main():
     stats = compute_country_stats(res_by_id, id_to_name)
     if stats.empty:
         raise RuntimeError("No stats computed; check inputs and name→ISO mapping.")
+
+    print(compute_SPI_corr(stats))
 
     # ------- load & prep map -------
     world = load_world()

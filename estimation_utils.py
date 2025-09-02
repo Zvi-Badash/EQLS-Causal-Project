@@ -135,6 +135,30 @@ def t_learner_estimate(
     return ate
 
 
+ESTIMATE_EFFECTS_METHODS = [
+        "backdoor.propensity_score_matching",
+        "backdoor.propensity_score_weighting",
+        "backdoor.propensity_score_stratification",
+        "backdoor.linear_regression",
+        "backdoor.distance_matching",
+        "backdoor.T_learner",  # <- custom
+    ]
+
+ESTIMATE_EFFECTS_DEFAULT_KWARGS = {
+        "backdoor.distance_matching": dict(
+            target_units="ate",
+            method_params={
+                'distance_metric': "minkowski",
+                'p': 1,
+                "num_matches_per_unit": 1,
+                "exact_match_cols": _get_schema()["cat"],
+            },
+        )
+    }
+
+def exact_match_ate():
+    raise NotImplementedError("Obsolete function")
+
 def estimate_effects(
     df: pd.DataFrame,
     graph,
@@ -142,6 +166,7 @@ def estimate_effects(
     ci_alpha: float = 0.05,
     n_boot: int = 10,
     random_state: int = 42,
+    kwargs: dict = ESTIMATE_EFFECTS_DEFAULT_KWARGS,
 ):
     """
     Estimate ATE with several DoWhy backdoor estimators (+ custom T-learner).
@@ -156,14 +181,6 @@ def estimate_effects(
             ci_df:   DataFrame with columns [method, point, lo, hi, alpha, n_boot],
             boot_df: DataFrame (shape: n_boot x n_methods) of bootstrap ATEs
     """
-    methods = [
-        "backdoor.propensity_score_matching",
-        "backdoor.propensity_score_weighting",
-        "backdoor.propensity_score_stratification",
-        "backdoor.linear_regression",
-        "backdoor.distance_matching",
-        "backdoor.T_learner",  # custom
-    ]
     kwargs = {
         "backdoor.distance_matching": dict(
             target_units="ate",
@@ -190,7 +207,7 @@ def estimate_effects(
         estimand = model.identify_effect()
 
         out = {}
-        for m in methods:
+        for m in ESTIMATE_EFFECTS_METHODS:
             try:
                 if m == "backdoor.T_learner":
                     out[m] = float(
@@ -201,6 +218,14 @@ def estimate_effects(
                             outcome_col=OUTCOME,
                         )
                     )
+                elif m == "backdoor.exact_matching_manual":
+                    ate = matching_ate(
+                        df,
+                        treat_col=TREATMENT,
+                        outcome_col=OUTCOME,
+                        **kwargs.get(m, {})
+                    )
+                    results[m] = ate
                 else:
                     est = model.estimate_effect(
                         estimand, method_name=m, **kwargs.get(m, {})
