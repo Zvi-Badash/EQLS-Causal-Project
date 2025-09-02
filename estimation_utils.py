@@ -143,6 +143,7 @@ ESTIMATE_EFFECTS_METHODS = [
         "backdoor.distance_matching",
         "backdoor.T_learner",  # <- custom
     ]
+
 ESTIMATE_EFFECTS_DEFAULT_KWARGS = {
         "backdoor.distance_matching": dict(
             target_units="ate",
@@ -156,7 +157,7 @@ ESTIMATE_EFFECTS_DEFAULT_KWARGS = {
     }
 
 def exact_match_ate():
-    pass
+    raise NotImplementedError("Obsolete function")
 
 def estimate_effects(
     df: pd.DataFrame,
@@ -218,15 +219,13 @@ def estimate_effects(
                         )
                     )
                 elif m == "backdoor.exact_matching_manual":
-                    p = kwargs.get(m, {})
-                    ate = exact_match_ate(
+                    ate = matching_ate(
                         df,
-                        treatment=TREATMENT,
-                        outcome=OUTCOME,
-                        exact_cols=p["exact_match_cols"],
-                        target_units=p.get("target_units", "ate"),
+                        treat_col=TREATMENT,
+                        outcome_col=OUTCOME,
+                        **kwargs.get(m, {})
                     )
-                    results[m] = ate  
+                    results[m] = ate
                 else:
                     est = model.estimate_effect(
                         estimand, method_name=m, **kwargs.get(m, {})

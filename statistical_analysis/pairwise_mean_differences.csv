@@ -1,16 +1,16 @@
 method_a,method_b,method_a_short,method_b_short,mean_diff,ci2.5,ci97.5,sd
-backdoor.propensity_score_matching,backdoor.propensity_score_weighting,PS Matching,PS Weighting,-0.5667268544912364,-1.1286929452759848,-0.036529542963088725,0.2927682233963391
-backdoor.propensity_score_matching,backdoor.propensity_score_stratification,PS Matching,PS Stratification,-0.2509169639328591,-0.758393231662877,0.3524755807668559,0.3055382668414421
-backdoor.propensity_score_matching,backdoor.linear_regression,PS Matching,Linear Regression,-0.3202892151709343,-0.847726144365493,0.18139749671565386,0.2840365251732537
-backdoor.propensity_score_matching,backdoor.distance_matching,PS Matching,Distance Matching,0.15322505800464026,-0.42536977958236644,0.7438370069605559,0.2913604398707425
-backdoor.propensity_score_matching,backdoor.T_learner,PS Matching,T-learner,-0.4463039553130368,-0.9984884474001676,0.09881977405093156,0.30080988706787676
-backdoor.propensity_score_weighting,backdoor.propensity_score_stratification,PS Weighting,PS Stratification,0.3158098905583773,0.057631152620163516,0.5645744382785297,0.12956006486530022
-backdoor.propensity_score_weighting,backdoor.linear_regression,PS Weighting,Linear Regression,0.2464376393203022,0.16056186436029005,0.31555155220873005,0.04158528841025082
-backdoor.propensity_score_weighting,backdoor.distance_matching,PS Weighting,Distance Matching,0.7199519124958768,0.3385669312846893,1.1750935959794988,0.2260505611141017
-backdoor.propensity_score_weighting,backdoor.T_learner,PS Weighting,T-learner,0.12042289917819986,0.04533456530796189,0.19554429571627818,0.04146594981295504
-backdoor.propensity_score_stratification,backdoor.linear_regression,PS Stratification,Linear Regression,-0.06937225123807517,-0.29880738966643927,0.16947486517064098,0.12461443036304656
-backdoor.propensity_score_stratification,backdoor.distance_matching,PS Stratification,Distance Matching,0.40414202193749943,-0.029286815000075017,0.9105910362948466,0.26075130233709237
-backdoor.propensity_score_stratification,backdoor.T_learner,PS Stratification,T-learner,-0.1953869913801776,-0.4469153498961391,0.06278042468151822,0.13476059069112992
-backdoor.linear_regression,backdoor.distance_matching,Linear Regression,Distance Matching,0.4735142731755746,0.09166447534356813,0.9472193329416945,0.22645019900015223
-backdoor.linear_regression,backdoor.T_learner,Linear Regression,T-learner,-0.12601474014210237,-0.2195571417942864,-0.010794003285864195,0.057353365409061094
-backdoor.distance_matching,backdoor.T_learner,Distance Matching,T-learner,-0.5995290133176769,-0.9881294494399889,-0.21673784180541325,0.2261528672976522
+backdoor.propensity_score_matching,backdoor.propensity_score_weighting,PS Matching,PS Weighting,-0.5705239594657471,-1.157667533186941,-0.046871889724957407,0.2805925697556342
+backdoor.propensity_score_matching,backdoor.propensity_score_stratification,PS Matching,PS Stratification,-0.2656862921568711,-0.9128974570006463,0.2987112380584917,0.3042305003868102
+backdoor.propensity_score_matching,backdoor.linear_regression,PS Matching,Linear Regression,-0.32505639338442305,-0.9111398338338191,0.18343375087654415,0.279525274244845
+backdoor.propensity_score_matching,backdoor.distance_matching,PS Matching,Distance Matching,0.17887761020881668,-0.4038355568445476,0.8387881863882451,0.3310236577358441
+backdoor.propensity_score_matching,backdoor.T_learner,PS Matching,T-learner,-0.4503325809262725,-1.0498315208088453,0.06647504601707045,0.28846716099644465
+backdoor.propensity_score_weighting,backdoor.propensity_score_stratification,PS Weighting,PS Stratification,0.304837667308876,0.05417595923045368,0.513558415213358,0.12044335482386523
+backdoor.propensity_score_weighting,backdoor.linear_regression,PS Weighting,Linear Regression,0.24546756608132403,0.1558230682534898,0.3176083198779506,0.04222091274796661
+backdoor.propensity_score_weighting,backdoor.distance_matching,PS Weighting,Distance Matching,0.7494015696745638,0.2507556703473498,1.239384371303789,0.252469800973588
+backdoor.propensity_score_weighting,backdoor.T_learner,PS Weighting,T-learner,0.12019137853947463,0.044670357176271144,0.1973289999091594,0.04055065213365013
+backdoor.propensity_score_stratification,backdoor.linear_regression,PS Stratification,Linear Regression,-0.05937010122755202,-0.27262364520931276,0.19066296911554342,0.11771438365316102
+backdoor.propensity_score_stratification,backdoor.distance_matching,PS Stratification,Distance Matching,0.44456390236568777,-0.019715367857277732,1.0323164595489942,0.2808157753236274
+backdoor.propensity_score_stratification,backdoor.T_learner,PS Stratification,T-learner,-0.1846462887694014,-0.3990033528384954,0.04456025062544871,0.12746053277109304
+backdoor.linear_regression,backdoor.distance_matching,Linear Regression,Distance Matching,0.5039340035932398,0.022441518572921444,0.9982674888493904,0.2529374277838051
+backdoor.linear_regression,backdoor.T_learner,Linear Regression,T-learner,-0.12527618754184938,-0.22829347615639664,-0.009511046277376159,0.05853648127935861
+backdoor.distance_matching,backdoor.T_learner,Distance Matching,T-learner,-0.6292101911350891,-1.1402720682469156,-0.15638368650773649,0.25394670450174395

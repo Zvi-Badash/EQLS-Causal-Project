@@ -1,7 +1,7 @@
 ,mean_ate
-backdoor.propensity_score_matching,6.55291569992266
-backdoor.propensity_score_weighting,7.119642554413897
-backdoor.propensity_score_stratification,6.80383266385552
-backdoor.linear_regression,6.873204915093594
-backdoor.distance_matching,6.39969064191802
-backdoor.T_learner,6.999219655235699
+backdoor.propensity_score_matching,6.533095997679814
+backdoor.propensity_score_weighting,7.103619957145561
+backdoor.propensity_score_stratification,6.798782289836685
+backdoor.linear_regression,6.8581523910642375
+backdoor.distance_matching,6.354218387470999
+backdoor.T_learner,6.9834285786060875
